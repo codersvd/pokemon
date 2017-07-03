@@ -1,0 +1,17 @@
+{
+  "app": {
+    "title": "Rest",
+    "host": "127.0.0.1",
+    "port": 3000,
+    "jsonSpaces": 4
+  },
+  "mongodb": {
+    "app": "mongodb://127.0.0.1/rest",
+    "sessions": "mongodb://127.0.0.1/rest_sessions"
+  },
+  "cookie": {
+    "sessionDomain": ".rest",
+    "sessionCookieName": "local.rest.sid",
+    "secret": "TYEqbEIMW9Y2ydqBoglKaAdk9NmlGrtMfbS6KrA7mOg="
+  }
+}
