@@ -11,7 +11,6 @@ class MyComponent extends React.Component {
             name: response.name
         }
         App.actions.loginFormFacebook(userObject);
-        console.log(response);
     }
 
     render() {

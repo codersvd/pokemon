@@ -1,6 +1,7 @@
 import {
    LOGIN_FORM_FACEBOOK,
-   LOGIN_FORM_SUBMIT
+   LOGIN_FORM_SUBMIT,
+   LOGIN_ERROR
 } from "./actions";
 
 
@@ -21,7 +22,7 @@ export default {
                     ...state,
                     name: action.user.name
                 };
-            case LOGIN ERROR:
+            case LOGIN_ERROR:
                 return {
                     ...state,
                     error: "Login error"

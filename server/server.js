@@ -24,8 +24,8 @@ mongoose.connect(config.mongodb.app).then((err) => {
 });
 
 https.createServer({
-    key: fs.readFileSync('key.pem'),
-    cert: fs.readFileSync('cert.pem'),
+    key: fs.readFileSync('server/key.pem'),
+    cert: fs.readFileSync('server/cert.pem'),
 }, app).listen(config.app.port, 'localhost', function (err) {
     if (err) {
         console.log(err);

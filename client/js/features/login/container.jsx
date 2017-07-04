@@ -1,6 +1,6 @@
 import App from '../../app';
 import React from 'react';
-import Facebook from "./components/facebookLogin";
+import Facebook from './components/facebookLogin';
 
 /**
  * @LoginContainer - class for login form
@@ -8,47 +8,46 @@ import Facebook from "./components/facebookLogin";
  */
 
 export default class LoginContainer extends React.Component {
-
-    constructor(props) {
-        super(props);
-        this.form = {
-            email: {
-                value: '',
-                error: false,
-                validation: 'rules' // @TODO validation rules
-            },
-            password: {
-                value: '',
-                error: false,
-                validation: 'rules' // @TODO validation rules
-            },
-            remember: {
-                value: false
-            }
-        };
-    }
+  constructor (props) {
+    super(props);
+    this.form = {
+      email: {
+        value: '',
+        error: false,
+        validation: 'rules' // @TODO validation rules
+      },
+      password: {
+        value: '',
+        error: false,
+        validation: 'rules' // @TODO validation rules
+      },
+      remember: {
+        value: false
+      }
+    };
+  }
 
     /**
      * It's function submit of data from form
      * @param e - is context of form
      */
-    submitHandler(e) {
-        e.preventDefault();
-        App.actions.loginFormSubmit(this.form);
-    }
+  submitHandler (e) {
+    e.preventDefault();
+    App.actions.loginFormSubmit(this.form);
+  }
 
     /**
      * Function of change from inputs
      * @param e - is context of input
      */
-    changeHandler(e) {
-        let {type, name, value, checked} = e.target;
-        value = type === 'checkbox' ? checked : value;
-        this.form[name].value = value;
-    }
+  changeHandler (e) {
+    let {type, name, value, checked} = e.target;
+    value = type === 'checkbox' ? checked : value;
+    this.form[name].value = value;
+  }
 
-    render() {
-        return <div className="container">
+  render () {
+    return <div className="container">
             <div className="login-form">
                 <h2>Login form</h2>
                 <form className="form" onSubmit={e => this.submitHandler(e)}>
@@ -72,7 +71,6 @@ export default class LoginContainer extends React.Component {
                     <Facebook/>
                 </form>
             </div>
-        </div>;
-    }
-
+        </div>
+  }
 }

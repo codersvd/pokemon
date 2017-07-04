@@ -1,17 +1,16 @@
 {
   "app": {
-    "title": "Rest",
+    "title": "Pokemon",
     "host": "127.0.0.1",
     "port": 3000,
     "jsonSpaces": 4
   },
   "mongodb": {
-    "app": "mongodb://127.0.0.1/rest",
-    "sessions": "mongodb://127.0.0.1/rest_sessions"
+    "app": "mongodb://admin:12qwaszx@ds149122.mlab.com:49122/pokemon"
   },
   "cookie": {
-    "sessionDomain": ".rest",
-    "sessionCookieName": "local.rest.sid",
+    "sessionDomain": ".pokemon",
+    "sessionCookieName": "local.pokemon.sid",
     "secret": "TYEqbEIMW9Y2ydqBoglKaAdk9NmlGrtMfbS6KrA7mOg="
   }
 }
