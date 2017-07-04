@@ -1,8 +1,6 @@
 import './less/app.less';
 
 import {mainInit} from './js/main';
-//import './js/features/server/';
-import './js/features/user/';
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import App from './js/app';
 

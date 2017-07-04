@@ -12,5 +12,10 @@
     "sessionDomain": ".pokemon",
     "sessionCookieName": "local.pokemon.sid",
     "secret": "TYEqbEIMW9Y2ydqBoglKaAdk9NmlGrtMfbS6KrA7mOg="
+  },
+  "facebookAuth": {
+    "clientID": "1925871511032482",
+    "clientSecret": "c695ca0777e45feddcca78c455e4c587",
+    "callbackURL": "/auth/facebook/callback"
   }
 }

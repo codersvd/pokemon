@@ -25,6 +25,9 @@ module.exports = {
         path: distDir,
         publicPath: '/'
     },
+    devServer: {
+        historyApiFallback: true
+    },
     module: {
         rules: [
             {
