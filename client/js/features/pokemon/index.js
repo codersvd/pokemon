@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import PokemonContainer from './container';
 import {setupActions, setupMiddlewares, setupReducers} from '../../app';
-import {loginFormSubmit, loginFormFacebook} from './actions';
+import {pokemonListAll} from './actions';
 import reducer from './reducers';
 import middlewares from './middlewares';
 
@@ -10,8 +10,7 @@ import middlewares from './middlewares';
  * Take object of actions
  */
 setupActions({
-    pokemonList,
-    pokemonSearch
+    pokemonListAll
 });
 /**
  * Registration middlewares
@@ -20,7 +19,6 @@ setupActions({
 setupMiddlewares(middlewares);
 setupReducers(reducer);
 
-
 export default connect((state) => {
     return {...state};
-})(LoginContainer);
+})(PokemonContainer);

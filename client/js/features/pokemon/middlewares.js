@@ -1,30 +1,27 @@
 import App from '../../app';
-import {LOGIN_FORM_SUBMIT, LOGIN_FORM_FACEBOOK} from './actions';
+import {POKEMON_LIST_ALL} from './actions';
 
 export default [
 
     /**
-     * @description middleware for action LOGIN_FORM_SUBMIT
-     * connect server and subscribe store
+     * @description middleware for action POKEMON_LIST_ALL
+     * get data from API and subscribe store
      */
     store => next => action => {
         next(action);
-        if (action.type === LOGIN_FORM_SUBMIT) {
-            // @TODO validation
-            App.actions.serverSend(action);
-        }
-    },
-
-    /**
-     * @description middleware for action LOGIN_FORM_FACEBOOK
-     * connect server and subscribe store
-     */
-    store => next => action => {
-        next(action);
-        if (action.type === LOGIN_FORM_FACEBOOK) {
-            fetch();
-            console.log(action.user);
+        if (action.type === POKEMON_LIST_ALL) {
+            let linkApi = "http://pokeapi.co/api/v2";
+            fetch(linkApi + "/pokemon/").then(res => {
+              if (res.status >= 400)
+                throw new Error("Server error");
+              return res.json();
+            })
+            .then(res => {
+              action.pokemon = res;
+              next(action);
+            }).catch(error => {
+              console.log(error);
+            });
         }
     }
-
 ];

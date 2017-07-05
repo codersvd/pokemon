@@ -1,5 +1,7 @@
 import React from 'react';
 import LoginContainer from './features/login/';
+import PokemonContainer from './features/pokemon/';
+import { BrowserRouter, Route, IndexRoute } from 'react-router-dom';
 
 /**
  * @class RootContainer
@@ -10,15 +12,20 @@ export default class RootContainer extends React.Component {
     render() {
         let {user, server} = this.props;
 
-        return <div>
-        <nav className="navbar navbar-default">
-            <div className="container-fluid">
-                <div className="navbar-header">
-                    { (!user.isAuth) ? <LoginContainer/> : "" }
+        return(
+        <BrowserRouter>
+                <div>
+                    <nav className="navbar navbar-default">
+                        <div className="container-fluid">
+                            <div className="navbar-header">
+                                { (!user.isAuth) ? <LoginContainer/> : "" }
+                            </div>
+                        </div>
+                    </nav>
+                    <Route path="/" component={PokemonContainer}/>
                 </div>
-            </div>
-        </nav>
-        </div>;
+        </BrowserRouter>
+        );
     }
 
 }

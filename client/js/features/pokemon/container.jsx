@@ -1,20 +1,26 @@
 import App from '../../app';
 import React from 'react';
-import Facebook from './components/facebookLogin';
 
 /**
- * @LoginContainer - class for login form
+ * @PokemonContainer - class for login form
  * @state - is object {email, password, remember}
  */
 
-export default class LoginContainer extends React.Component {
+export default class PokemonContainer extends React.Component {
   constructor (props) {
     super(props);
   }
 
+  componentDidMount(){
+    App.actions.pokemonListAll();
+  }
+
   render () {
-    return <div className="container">
-            <Facebook/>
-        </div>
+    console.log(this.props);
+    return (
+      <div className="container">
+
+      </div>
+    );
   }
 }
