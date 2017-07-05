@@ -1,5 +1,6 @@
 import App from '../../app';
 import React from 'react';
+import TableView from "./components/tableView";
 
 /**
  * @PokemonContainer - class for login form
@@ -16,10 +17,9 @@ export default class PokemonContainer extends React.Component {
   }
 
   render () {
-    console.log(this.props);
-    return (
+      return (
       <div className="container">
-
+          { (this.props.pokemon.list) ? <TableView list={this.props.pokemon.list}/> : "Loading..." }
       </div>
     );
   }

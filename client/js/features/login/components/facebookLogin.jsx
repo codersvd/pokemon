@@ -2,7 +2,7 @@ import App from '../../../app';
 import React from 'react';
 import FacebookLogin from 'react-facebook-login';
 
-class MyComponent extends React.Component {
+class Facebook extends React.Component {
     responseFacebook(response) {
         let userObject = {
             email: response.email,
@@ -28,4 +28,4 @@ class MyComponent extends React.Component {
     }
 }
 
-export default MyComponent;
+export default Facebook;
