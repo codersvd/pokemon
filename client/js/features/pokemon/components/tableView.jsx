@@ -1,6 +1,7 @@
 import App from '../../../app';
 import React from 'react';
 import ItemTable from "./itemTable";
+import Pagination from "./pagination";
 
 class TableView extends React.Component {
     constructor(props){
@@ -23,11 +24,11 @@ class TableView extends React.Component {
                         </thead>
                         <tbody>
                         {this.props.list.results.map((curr, i) => {
-                            console.log(curr);
-                            return <ItemTable key={i} pokemon={curr}/>
+                          return <ItemTable key={i} pokemon={curr}/>
                         })}
                         </tbody>
                     </table>
+                    <Pagination/>
                 </div>
             );
     }

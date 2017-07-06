@@ -4,9 +4,8 @@ import TableView from "./components/tableView";
 
 /**
  * @PokemonContainer - class for login form
- * @state - is object {email, password, remember}
+ * @state - is object {pokemon}
  */
-
 export default class PokemonContainer extends React.Component {
   constructor (props) {
     super(props);
@@ -17,10 +16,16 @@ export default class PokemonContainer extends React.Component {
   }
 
   render () {
+    let list = this.props.pokemon.list;
+    let loading = "Loading...";
+    if(list) {
       return (
-      <div className="container">
-          { (this.props.pokemon.list) ? <TableView list={this.props.pokemon.list}/> : "Loading..." }
-      </div>
-    );
+        <div className="container">
+          { (Object.keys(list).length) ? <TableView list={ list }/> : loading}
+        </div>
+      );
+    }
+
+    return <div>{loading}</div>;
   }
 }

@@ -1,23 +1,34 @@
 import App from '../../app';
 import {POKEMON_LIST_ALL} from './actions';
 
-let getAllInfo = (data, result) =>{
-    fetch(data.url).then(res => {
+/**
+ * @function Pokemon
+ * @param {Object} data - info of pokemon
+ */
+function Pokemon(data) {
+  this.id = data.id;
+  this.name = data.name;
+  this.weight = data.weight;
+  this.height = data.height;
+  this.types = data.types;
+  this.img = data.sprites.front_default;
+};
+
+/**
+ * @function getAllInfo
+ * @description get info of each pokemon from API
+ * @param data
+ * @returns {Promise}
+ */
+let getAllInfo = (data) =>{
+    return fetch(data.url).then(res => {
             if (res.status >= 400)
                 throw new Error("Server error");
             return res.json();
         })
         .then(res => {
-            let poke = {
-                id: res.id,
-                name: res.name,
-                weight: res.weight,
-                height: res.height,
-                types: res.types,
-                img: res.sprites.front_default
-            }
-            console.log(poke);
-            result.push(poke);
+            let poke = new Pokemon(res);
+            return poke;
         }).catch(error => {
             console.log(error);
         });
@@ -39,13 +50,13 @@ export default [
               return res.json();
             })
             .then(res => {
-                let pokemonList = [];
-                res.results.map( (curr, i)=>{
-                    getAllInfo(curr, pokemonList);
+                Promise.all(res.results.map( curr=>{
+                   return getAllInfo(curr);
+                })).then(val =>{
+                  res.results = val;
+                  action.pokemon = res;
+                  next(action);
                 });
-                res.results = pokemonList;
-                action.pokemon = res;
-                next(action);
             }).catch(error => {
               console.log(error);
             });

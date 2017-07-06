@@ -11,4 +11,4 @@ App.store = createStoreWithMiddleware(combineReducers(App.reducers), {}, devTool
 
 mainInit(document.getElementById('root'));
 // @TODO get from config
-App.actions.serverConnect('http://127.0.0.1:9000');
+//App.actions.serverConnect('http://127.0.0.1:9000');

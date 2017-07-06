@@ -6,7 +6,7 @@ export const POKEMON_LIST_ALL = 'POKEMON_LIST_ALL';
  * @return action {Object}
  */
 export function pokemonListAll() {
-    return {
+  return {
         type: POKEMON_LIST_ALL,
         pokemon: {}
     };

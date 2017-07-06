@@ -1,5 +1,5 @@
 import {
-   POKEMON_LIST_ALL
+    POKEMON_LIST_ALL
 } from "./actions";
 
 
@@ -15,7 +15,7 @@ export default {
         switch (action.type) {
           case POKEMON_LIST_ALL:
             return {...state, list: action.pokemon};
-            default:
+          default:
                 return state;
         }
     }
