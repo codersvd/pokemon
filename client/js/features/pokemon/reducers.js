@@ -13,9 +13,9 @@ export default {
      */
     pokemon: (state = {}, action) => {
         switch (action.type) {
-          case POKEMON_LIST_ALL:
-            return {...state, list: action.pokemon};
-          default:
+            case POKEMON_LIST_ALL:
+                return {...state, list: action.pokemon};
+            default:
                 return state;
         }
     }

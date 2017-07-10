@@ -7,32 +7,36 @@ import TableView from "./components/tableView";
  * @state - is object {pokemon}
  */
 export default class PokemonContainer extends React.Component {
-  constructor (props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.onChangePage = this.onChangePage.bind(this);
-  }
-
-  componentDidMount(){
-    App.actions.pokemonListAll(0);
-  }
-
-  onChangePage(page) {
-    console.log(page);
-    App.actions.pokemonListAll(page);
-  }
-
-  render () {
-    let list = this.props.pokemon.list;
-    let loading = "Loading...";
-    if(list) {
-      return (
-        <div className="container">
-          { (Object.keys(list).length) ? <TableView onChangePage={this.onChangePage} list={ list }/> : loading}
-        </div>
-      );
+        this.state = {
+            page: 1
+        };
+        this.onChangePage = this.onChangePage.bind(this);
     }
 
-    return <div>{loading}</div>;
-  }
+    componentDidMount() {
+        App.actions.pokemonListAll(0);
+    }
+
+    onChangePage(p) {
+        this.setState({page: p});
+        App.actions.pokemonListAll(p);
+    }
+
+    render() {
+        let list = this.props.pokemon.list;
+        let loading = "Loading...";
+        if (list) {
+            return (
+                <div className="container">
+                    { (Object.keys(list).length) ?
+                        <TableView page={this.state.page} onChangePage={this.onChangePage} list={ list }/> : loading}
+                </div>
+            );
+        }
+
+        return <div>{loading}</div>;
+    }
 }
