@@ -5,9 +5,10 @@ export const POKEMON_LIST_ALL = 'POKEMON_LIST_ALL';
  * @description action to get all pokemons
  * @return action {Object}
  */
-export function pokemonListAll() {
+export function pokemonListAll(page) {
   return {
         type: POKEMON_LIST_ALL,
+        page: page-1,
         pokemon: {}
     };
 }

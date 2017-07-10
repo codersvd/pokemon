@@ -9,10 +9,17 @@ import TableView from "./components/tableView";
 export default class PokemonContainer extends React.Component {
   constructor (props) {
     super(props);
+
+    this.onChangePage = this.onChangePage.bind(this);
   }
 
   componentDidMount(){
-    App.actions.pokemonListAll();
+    App.actions.pokemonListAll(0);
+  }
+
+  onChangePage(page) {
+    console.log(page);
+    App.actions.pokemonListAll(page);
   }
 
   render () {
@@ -21,7 +28,7 @@ export default class PokemonContainer extends React.Component {
     if(list) {
       return (
         <div className="container">
-          { (Object.keys(list).length) ? <TableView list={ list }/> : loading}
+          { (Object.keys(list).length) ? <TableView onChangePage={this.onChangePage} list={ list }/> : loading}
         </div>
       );
     }

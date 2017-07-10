@@ -23,6 +23,7 @@ export default class RootContainer extends React.Component {
                         </div>
                     </nav>
                     <Route path="/" component={PokemonContainer}/>
+                    <Route path="/(:filter)" component={PokemonContainer}/>
                 </div>
         </BrowserRouter>
         );

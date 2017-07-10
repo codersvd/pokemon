@@ -43,23 +43,30 @@ export default [
     store => next => action => {
         next(action);
         if (action.type === POKEMON_LIST_ALL) {
-            let linkApi = "http://pokeapi.co/api/v2";
-            fetch(linkApi + "/pokemon/").then(res => {
-              if (res.status >= 400)
-                throw new Error("Server error");
-              return res.json();
-            })
-            .then(res => {
-                Promise.all(res.results.map( curr=>{
-                   return getAllInfo(curr);
-                })).then(val =>{
-                  res.results = val;
-                  action.pokemon = res;
-                  next(action);
+          let linkApi = "http://pokeapi.co/api/v2";
+            if(!sessionStorage.getItem("pokemons"+action.page)) {
+              fetch(linkApi + "/pokemon/?offset="+(action.page*20)).then(res => {
+                if (res.status >= 400)
+                  throw new Error("Server error");
+                return res.json();
+              })
+                .then(res => {
+                  Promise.all(res.results.map(curr => {
+                    return getAllInfo(curr);
+                  })).then(val => {
+                    res.results = val;
+                    action.pokemon = res;
+                    sessionStorage.setItem("pokemons" + action.page, JSON.stringify(res));
+                    next(action);
+                  });
+                }).catch(error => {
+                  console.log(error);
                 });
-            }).catch(error => {
-              console.log(error);
-            });
+            }
+            else {
+              action.pokemon = JSON.parse(sessionStorage.getItem("pokemons" + action.page));
+              next(action);
+            }
         }
     }
 ];

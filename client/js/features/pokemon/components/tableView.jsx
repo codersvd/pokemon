@@ -28,7 +28,7 @@ class TableView extends React.Component {
                         })}
                         </tbody>
                     </table>
-                    <Pagination/>
+                    <Pagination items={this.props.list} onChangePage={this.props.onChangePage} />
                 </div>
             );
     }
