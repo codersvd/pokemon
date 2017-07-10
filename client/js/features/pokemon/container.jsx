@@ -23,6 +23,7 @@ export default class PokemonContainer extends React.Component {
   }
 
   render () {
+    console.log(this.props.location);
     let list = this.props.pokemon.list;
     let loading = "Loading...";
     if(list) {
