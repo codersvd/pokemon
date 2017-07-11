@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import PokemonContainer from './container';
 import {setupActions, setupMiddlewares, setupReducers} from '../../app';
-import {pokemonListAll} from './actions';
+import {pokemonListAll, pokemonSearch} from './actions';
 import reducer from './reducers';
 import middlewares from './middlewares';
 
@@ -10,7 +10,8 @@ import middlewares from './middlewares';
  * Take object of actions
  */
 setupActions({
-    pokemonListAll
+    pokemonListAll,
+    pokemonSearch
 });
 /**
  * Registration middlewares

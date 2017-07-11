@@ -1,4 +1,5 @@
 export const POKEMON_LIST_ALL = 'POKEMON_LIST_ALL';
+export const POKEMON_SEARCH = 'POKEMON_SEARCH';
 
 /**
  * @function pokemonlistAll
@@ -6,9 +7,22 @@ export const POKEMON_LIST_ALL = 'POKEMON_LIST_ALL';
  * @return action {Object}
  */
 export function pokemonListAll(page) {
-  return {
+    return {
         type: POKEMON_LIST_ALL,
-        page: page-1,
+        page: page - 1,
         pokemon: {}
     };
+}
+
+/**
+ * @function pokemonSearch
+ * @description action to search pokemon from all list
+ * @return action {Object}
+ */
+export function pokemonSearch(nameOrId) {
+  return {
+    type: POKEMON_SEARCH,
+    name: nameOrId,
+    pokemon: {}
+  };
 }
